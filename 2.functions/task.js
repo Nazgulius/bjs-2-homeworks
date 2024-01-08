@@ -1,21 +1,8 @@
 function getArrayParams(...arr) {
-  min = arr[0];
-  max = arr[0];
-  sum = 0;
-  for (i = 0; i < arr.length; i++) {
-    if (arr[i] < min) {
-      min = arr[i]
-    }
-
-    if (arr[i] > max) {
-      max = arr[i]
-    }
-
-    sum += arr[i];    
-  }
-
-  avg = (sum / arr.length).toFixed(2);
-  avg = Number(avg);
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+  let sum = arr.reduce((elementOne, elementTwo) => elementOne + elementTwo);
+  let avg = Number((sum / arr.length).toFixed(2));
 
   return { min: min, max: max, avg: avg };
 }
@@ -25,9 +12,7 @@ function summElementsWorker(...arr) {
     return 0;
   }
 
-  let sum = arr.reduce(function (a, b) {
-      return a + b;
-  });
+  let sum = arr.reduce((elementOne, elementTwo) => elementOne + elementTwo);
   
   return sum;
 }
@@ -37,7 +22,7 @@ function differenceMaxMinWorker(...arr) {
     return 0;
   }
 
-  return Math.max.apply(null, arr) - Math.min.apply(null, arr); 
+  return Math.max(...arr) - Math.min(...arr); 
 }
 
 function differenceEvenOddWorker(...arr) {
