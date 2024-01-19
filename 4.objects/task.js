@@ -10,17 +10,17 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) { 
-    if (Array.isArray(this[marks])) {
-        return 0;
+    if (Array.isArray(this.marks)) {
+        this.marks.push(...marks);
     }
 
-    this.marks.push(...marks);
+    return 0;      
 }
 
 Student.prototype.getAverage = function () {
-    if (this.marks.length === 0){
+    if (!Array.isArray(this.marks) || this.marks.length === 0){
       return 0;
-    }
+    }    
 
     let sum = this.marks.reduce((elementOne, elementTwo) => elementOne + elementTwo);
 
