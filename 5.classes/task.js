@@ -100,22 +100,15 @@ class Library {
     }
 
     findBookBy (type, value) { 
-        for (let i = 0; i < this.books.length; i++) {            
-            if (this.books.find((elem) => elem === value)) {
-                return this.books[i];
-            } else {
-                return null;
-            }
-        }
-
+        debugger
+        let searthBook = this.books.find((elem) => type in elem);
         
-        /* for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].type && this.books[i].type === value) {
-                return this.books[i];
-            } else {
-                return null;
-            }
-        } */
+        if (searthBook) {
+            return searthBook;
+        } else {
+            return null;
+        }
+        
     }
 
     giveBookByName (bookName) {
