@@ -100,26 +100,25 @@ class Library {
     }
 
     findBookBy (type, value) { 
-        debugger
-        let searthBook = this.books.find((elem) => type in elem);
+        let searthBook = this.books.find((elem) => elem[type] === value);
         
         if (searthBook) {
             return searthBook;
         } else {
             return null;
         }
-        
     }
 
     giveBookByName (bookName) {
-        for (let i = 0; i < this.books.length; i++) {
-            if (this.books.find((elem) => elem.name === bookName)) {   
-                let bookOut =  this.books[i];
-                this.books.slice(i, 1);            
-                return bookOut;                
-            } else {
-                return null;
-            }
+        debugger
+       let book = this.books.find((elem) => elem.name === bookName);
+        console.log(books.indexOf(book));
+
+        if (book) {  
+            this.books.slice(books.indexOf(book), 1);            
+            return book;                
+        } else {
+            return null;
         }
     }
 }
