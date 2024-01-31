@@ -17,14 +17,28 @@ function validateCount (value) {
 
 //(sideA, sideB, sideC)
 
-class Triangle  {
+class Triangle {
     constructor (sideA, sideB, sideC) {
         this.sideA = sideA; 
         this.sideB = sideB;
         this.sideC = sideC;
+
+        if (((sideA + sideB) < sideC) || ((sideA + sideC) < sideB) || ((sideC + sideB) < sideA)) {
+            throw new Error("Треугольник с такими сторонами не существует");
+        }
+    }
+    
+    get perimeter () {
+        return sideA + sideB + sideC;    
     }
 
-    if (sideA < sideC) { //(((sideA + sideB) < sideC) || ((sideA + sideC) < sideB) || ((sideC + sideB) < sideA)) {
-        throw new Error("Треугольник с такими сторонами не существует");
+    get area () {
+        let p = 1/2 * (sideA + sideB + sideC);
+        let s = Math.sqrt(p * (p - this.sideA) * (p - this.sideB) * (p - this.sideC)); 
+        return s;
     }
+}
+
+function getTriangle (sideA, sideB, sideC) {
+    return 
 }
