@@ -9,13 +9,22 @@
 
 function validateCount (value) {
     try {
-        let num = parseCount(value);
-        if (num) {
-            return num;
-        }
-               
+        return parseCount(value);
     } catch (error) {
-        console.log(error);
+        return error;
     } 
 }
 
+//(sideA, sideB, sideC)
+
+class Triangle  {
+    constructor (sideA, sideB, sideC) {
+        this.sideA = sideA; 
+        this.sideB = sideB;
+        this.sideC = sideC;
+    }
+
+    if (sideA < sideC) { //(((sideA + sideB) < sideC) || ((sideA + sideC) < sideB) || ((sideC + sideB) < sideA)) {
+        throw new Error("Треугольник с такими сторонами не существует");
+    }
+}
