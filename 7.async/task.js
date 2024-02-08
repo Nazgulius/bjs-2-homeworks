@@ -4,12 +4,12 @@ class AlarmClock {
       this.intervalId = intervalId;
     }
   
-    addClock (time, callBack, id) {
+    addClock (time, callBack) {
+        // let time = new Date();
+        // let timeStart = `${time.getHours()}:${time.getMinutes()}`;
+        // let timeStart = time.getHours() + ":" + time.getMinutes();
 
-        // `${time.getHours()}:${time.getMinutes()}`
-        let timeStart = `${time.getHours()}:${time.getMinutes()}`;
-
-        if (id === undefined) {
+        if (time === undefined && callBack === undefined) {
           throw new Error('Отсутствуют обязательные аргументы');
         }
 
@@ -31,5 +31,37 @@ class AlarmClock {
             }
         });
     }
-  }
+
+    getCurrentFormattedTime () {
+        let time = new Date();
+        return `${time.getHours()}:${time.getMinutes()}`;
+    }
+
+    start () {
+        if (this.intervalId !== undefined) {
+            return 0;
+        }
+
+        this.intervalId = this.alarmCollection.forEach(item => {            
+            if (item.time === new Date() && canCall === true) {
+                canCall = false;
+                callback;
+            }
+        });
+    }
+
+    stop () {
+        clearInterval();
+        this.intervalId = null;
+    }
+
+    resetAllCalls () {
+        this.alarmCollection.forEach(item => item.canCall = true);
+    }
+
+    clearAlarms  () {
+        stop();
+        this.alarmCollection = [];
+    }
+}
   
