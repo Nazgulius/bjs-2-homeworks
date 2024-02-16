@@ -37,7 +37,7 @@ class AlarmClock {
 
     start () {
         if (this.intervalId === null) {
-            let checkClock = setInterval(() => {
+            this.intervalId = setInterval(() => {
                 this.alarmCollection.forEach(item => {
                     if (this.getCurrentFormattedTime() === item.time && item.canCall === true) {
                         item.canCall = false;
@@ -45,8 +45,6 @@ class AlarmClock {
                     }
                 })
             }, 1000);
-        
-            this.intervalId = checkClock;
         } else {
             return 0;
         }
